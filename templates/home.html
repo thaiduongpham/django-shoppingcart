@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+<!-- load static here -->
+{% load staticfiles %}
+
+{% block content %}
+
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"> Demo Shopping Cart </a>
+		</div>
+
+		<div id="navbar" class="navbar-collapse collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#">Sign in</a>
+				</li>
+				<li>
+					<a href="#">Sign up</a>
+				</li>                                
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron">
+	<div class="container">
+
+		<div class="col-sm-6">
+			<h1> Welcome to Demo Shop </h1>
+			<p> Get acquainted with our newest arrivals! Shop the latest innovations from top brands in ebook, research papers, music recorder, and more.</p>
+			<p><a class="btn btn-default btn-block btn-lg" href="#" role="button"> See more  &raquo;</a></p>
+		</div>
+		<div class="col-sm-6">
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/audio.jpg' %}" class="img-top">
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/audio2.jpg' %}" class="img-top">
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/audio3.jpg' %}" class="img-top">
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/audio_mp3.jpg' %}" class="img-top">
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/audio_wma.png' %}" class="img-top">
+				</p>
+			</div>
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-top">
+				</p>
+			</div>
+
+			<div class="col-sm-3">
+				<p>
+					<img src="{% static 'img/pdf_cover.png' %}" class="img-top">
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- <hr/> -->
+
+<!-- <div class="container" style="text-align: center"> -->
+<div class="container">
+
+	<div> <h3> Reseach Papers </h3> </div>
+
+	<hr/>
+
+	<div class="row">
+		<div class="col-sm-3">
+			<!-- <span class="label label-danger"> New </span> -->
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf"> 
+			<h4> Paper 1  </h4> 
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 1</li>
+				<li> Year 1</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<h4> Paper 2 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 2</li>
+				<li> Year 2</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<h4> Paper 3 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 3</li>
+				<li> Year 3</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<h4> Paper 4 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 4</li>
+			</ul>
+			<li> Year 4</li>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<h4> Paper 5 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 5</li>
+				<li> Year 5</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<h4> Paper 6 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 6</li>
+				<li> Year 6</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<h4> Paper 7 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 7</li>
+				<li> Year 7</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<h4> Paper 8 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Author 8</li>
+				<li> Year 8</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+

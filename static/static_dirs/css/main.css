@@ -1,0 +1,55 @@
+
+body {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.navbar-inverse {
+	background-color: #007cae;
+	border-color: #007cae;
+}
+.navbar {
+	border-radius: 0px !important;
+}
+.navbar-inverse .navbar-brand {
+	color: #FFFFFF;
+}
+
+.navbar-nav>li>a  {
+	color: white !important;
+	text-decoration: underline;
+}
+
+.navbar-nav>li>p  {
+	color: white !important;
+}
+
+.img-pdf {
+	width: 200px;
+	height: 200px;
+}
+
+.img-top {
+	width: 120px;
+	height: 120px;
+}
+
+#btn_addtocart{
+	text-align: center;
+}
+
+.jumbotron h1{
+	font-family: monospace;
+	font-weight: 100;
+}
+
+.jumbotron p{
+	font-weight: 100;
+	font-style: 30px;
+}
+
+.jumbotron{
+	background-color: white;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
