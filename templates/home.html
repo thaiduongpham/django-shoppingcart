@@ -20,11 +20,8 @@
 
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#">Sign in</a>
+					<a href="#audio"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge">5</span> </a>
 				</li>
-				<li>
-					<a href="#">Sign up</a>
-				</li>                                
 			</ul>
 		</div>
 	</div>
@@ -36,7 +33,7 @@
 		<div class="col-sm-6">
 			<h1> Welcome to Demo Shop </h1>
 			<p> Get acquainted with our newest arrivals! Shop the latest innovations from top brands in ebook, research papers, music recorder, and more.</p>
-			<p><a class="btn btn-default btn-block btn-lg" href="#" role="button"> See more  &raquo;</a></p>
+			<p><a class="btn btn-default btn-block btn-lg" href="#paper" role="button"> See more  &raquo;</a></p>
 		</div>
 		<div class="col-sm-6">
 			<div class="col-sm-3">
@@ -84,14 +81,14 @@
 <!-- <div class="container" style="text-align: center"> -->
 <div class="container">
 
-	<div> <h3> Reseach Papers </h3> </div>
+	<h3 id = "paper"> Reseach Papers </h3> 
 
 	<hr/>
 
 	<div class="row">
 		<div class="col-sm-3">
 			<!-- <span class="label label-danger"> New </span> -->
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf"> 
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-item"> 
 			<h4> Paper 1  </h4> 
 			<ul>
 				<li> Price: 4€</li>
@@ -102,7 +99,7 @@
 		</div>
 
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
 			<h4> Paper 2 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -113,7 +110,7 @@
 		</div>
 
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
 			<h4> Paper 3 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -123,7 +120,7 @@
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
 			<h4> Paper 4 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -134,7 +131,7 @@
 
 		</div>
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
 			<h4> Paper 5 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -144,7 +141,7 @@
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
 			<h4> Paper 6 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -154,7 +151,7 @@
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
 			<h4> Paper 7 </h4>
 			<ul>
 				<li> Price: 4€</li>
@@ -164,11 +161,103 @@
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-pdf">
+			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
 			<h4> Paper 8 </h4>
 			<ul>
 				<li> Price: 4€</li>
 				<li> Author 8</li>
+				<li> Year 8</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+	</div>
+
+
+	<h3 id = "audio"> Audio Recordings  </h3> 
+
+	<hr/>
+
+	<div class="row">
+		<div class="col-sm-3">
+
+			<img src="{% static 'img/audio.jpg' %}" class="img-item"> 
+			<h4> Audio File 1  </h4> 
+			<ul>
+				<li> Price: 3€</li>
+				<li> Singer 1</li>
+				<li> Year 1</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio2.jpg' %}" class="img-item">
+			<h4> Audio File 2 </h4>
+			<ul>
+				<li> Price: 3€</li>
+				<li> Singer 2</li>
+				<li> Year 2</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio3.jpg' %}" class="img-item">
+			<h4> Audio File 3 </h4>
+			<ul>
+				<li> Price: 2€</li>
+				<li> Singer 3</li>
+				<li> Year 3</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio_mp3.jpg' %}" class="img-item">
+			<h4> Audio File 4 </h4>
+			<ul>
+				<li> Price: 1€</li>
+				<li> Singer 4</li>
+			</ul>
+			<li> Year 4</li>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio_wma.png' %}" class="img-item">
+			<h4> Audio File 5 </h4>
+			<ul>
+				<li> Price: 2€</li>
+				<li> Singer 5</li>
+				<li> Year 5</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio.jpg' %}" class="img-item">
+			<h4> Audio File 6 </h4>
+			<ul>
+				<li> Price: 4€</li>
+				<li> Singer 6</li>
+				<li> Year 6</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio_wma.png' %}" class="img-item">
+			<h4> Audio File 7 </h4>
+			<ul>
+				<li> Price: 6€</li>
+				<li> Singer 7</li>
+				<li> Year 7</li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		<div class="col-sm-3">
+			<img src="{% static 'img/audio2.jpg' %}" class="img-item">
+			<h4> Audio File 8 </h4>
+			<ul>
+				<li> Price: 5€</li>
+				<li> Singer 8</li>
 				<li> Year 8</li>
 			</ul>
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
