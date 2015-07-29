@@ -17,7 +17,6 @@
 		</div>
 
 		<div id="navbar" class="navbar-collapse collapse">
-
 			<ul class="nav navbar-nav navbar-right">
 				<li>
 					<a href="#audio"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge">5</span> </a>
@@ -82,19 +81,28 @@
 
 	<hr/>
 
+<!-- 	<p id="btn_addtocart"><a class="btn btn-danger" href="addtocart/1988/" role="button"> Test Cart </a></p>
+	<p> return PRICE value: {{price}} </p>
+	<p> return Author value: {{author}} </p>
+	<img src= {{url}} class="img-item"> -->
+
 	<div class="row">
+		
+		{% for product in list_paper %}
 		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-item"> 
-			<h4> Paper 1  </h4> 
+			<img src= {{product.url}} class="img-item"> 
+			<h4> {{product.name}}  </h4> 
 			<ul>
-				<li> Price: 4€</li>
-				<li> Author 1</li>
-				<li> Year 1</li>
+				<li> Price: {{product.price}}€</li>
+				<li> {{product.author}} </li>
+				<li> Year: {{product.year}} </li>
 			</ul>
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
+		{% endfor %}
 
-		<div class="col-sm-3">
+
+		<!-- <div class="col-sm-3">
 			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
 			<h4> Paper 2 </h4>
 			<ul>
@@ -121,8 +129,8 @@
 			<ul>
 				<li> Price: 4€</li>
 				<li> Author 4</li>
+				<li> Year 4</li>
 			</ul>
-			<li> Year 4</li>
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 
 		</div>
@@ -164,15 +172,30 @@
 				<li> Author 8</li>
 				<li> Year 8</li>
 			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-	</div>
-
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="/addtocart" role="button" name = "btn_audio1"> Add to cart </a></p>
+		</div> -->
+	</div>  <!--of div row-->
 
 	<h3 id = "audio"> Audio Recordings  </h3> 
 
 	<hr/>
 
+	<div class="row">
+		
+		{% for product in list_audio %}
+		<div class="col-sm-3">
+			<img src= {{product.url}} class="img-item"> 
+			<h4> {{product.name}}  </h4> 
+			<ul>
+				<li> Price: {{product.price}}€</li>
+				<li> {{product.author}} </li>
+				<li> Year: {{product.year}} </li>
+			</ul>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+		</div>
+		{% endfor %}
+
+<!--
 	<div class="row">
 		<div class="col-sm-3">
 
@@ -183,7 +206,7 @@
 				<li> Singer 1</li>
 				<li> Year 1</li>
 			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button" name="btn_paper1"> Add to cart </a></p>
 		</div>
 
 		<div class="col-sm-3">
@@ -258,6 +281,7 @@
 			</ul>
 			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
 		</div>
+	</div> -->
 	</div>
 
 </div>

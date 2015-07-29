@@ -7,7 +7,9 @@ class Product(models.Model):
 	author = models.CharField(max_length=100)	
 	year = models.IntegerField()
 	price = models.IntegerField(default = 0)
+	url = models.CharField(max_length=100, default = '/static/img/audio.jpg')	
 	catagory = models.CharField(max_length=30, default = 'no_catagory')
 
+	
 
 
