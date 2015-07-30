@@ -19,7 +19,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="#audio"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge">5</span> </a>
+					<a href="itemlist"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge">0</span> </a>
 				</li>
 			</ul>
 		</div>
@@ -81,13 +81,37 @@
 
 	<hr/>
 
-<!-- 	<p id="btn_addtocart"><a class="btn btn-danger" href="addtocart/1988/" role="button"> Test Cart </a></p>
+	<script>
+		$(document).ready(function(){
+			$(".btn-danger").click(function(){
+
+				// Update Number of item in cart
+				var count = 0;
+				count ++;
+				$(".badge").text(count);
+
+				// var id = $(this).attr("id");
+
+				// $.get("addtocart", function(data, status){
+				// 	alert("Data: " + data + "\nStatus: " + status);
+				// });
+			});
+		});		
+	</script>
+
+	<!-- 	<p id="btn_addtocart"><a class="btn btn-danger" href="addtocart/1988/" role="button"> Test Cart </a></p>
+	<p> return PRICE value: {{price}} </p>
+	<p> return Author value: {{author}} </p>
+	<img src= {{url}} class="img-item"> -->
+
+<!-- 	<p id="btn_addtocart"><a id = "{{product_00}}" class="btn btn-danger" href="addtocart/1988/" role="button"> Test Cart </a></p>
+
 	<p> return PRICE value: {{price}} </p>
 	<p> return Author value: {{author}} </p>
 	<img src= {{url}} class="img-item"> -->
 
 	<div class="row">
-		
+
 		{% for product in list_paper %}
 		<div class="col-sm-3">
 			<img src= {{product.url}} class="img-item"> 
@@ -97,84 +121,26 @@
 				<li> {{product.author}} </li>
 				<li> Year: {{product.year}} </li>
 			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" id = {{product.product_id}} role="button"> Add to cart </a></p>
+
 		</div>
 		{% endfor %}
 
 
-		<!-- <div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
-			<h4> Paper 2 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 2</li>
-				<li> Year 2</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
-			<h4> Paper 3 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 3</li>
-				<li> Year 3</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
-			<h4> Paper 4 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 4</li>
-				<li> Year 4</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
-			<h4> Paper 5 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 5</li>
-				<li> Year 5</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
-			<h4> Paper 6 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 6</li>
-				<li> Year 6</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_cover.png' %}" class="img-item">
-			<h4> Paper 7 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 7</li>
-				<li> Year 7</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/pdf_wto_cover.png' %}" class="img-item">
-			<h4> Paper 8 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Author 8</li>
-				<li> Year 8</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="/addtocart" role="button" name = "btn_audio1"> Add to cart </a></p>
-		</div> -->
 	</div>  <!--of div row-->
+
+	{% for product in list_paper1 %}
+	<div class="col-sm-3">
+		<img src= {{product.url}} class="img-item"> 
+		<h4> {{product.name}}  </h4> 
+		<ul>
+			<li> Price: {{product.price}}€</li>
+			<li> {{product.author}} </li>
+			<li> Year: {{product.year}} </li>
+		</ul>
+		<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href= {{product.product_id}} role="button"> Add to cart </a></p>
+	</div>
+	{% endfor %}
 
 	<h3 id = "audio"> Audio Recordings  </h3> 
 
@@ -195,93 +161,6 @@
 		</div>
 		{% endfor %}
 
-<!--
-	<div class="row">
-		<div class="col-sm-3">
-
-			<img src="{% static 'img/audio.jpg' %}" class="img-item"> 
-			<h4> Audio File 1  </h4> 
-			<ul>
-				<li> Price: 3€</li>
-				<li> Singer 1</li>
-				<li> Year 1</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button" name="btn_paper1"> Add to cart </a></p>
-		</div>
-
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio2.jpg' %}" class="img-item">
-			<h4> Audio File 2 </h4>
-			<ul>
-				<li> Price: 3€</li>
-				<li> Singer 2</li>
-				<li> Year 2</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio3.jpg' %}" class="img-item">
-			<h4> Audio File 3 </h4>
-			<ul>
-				<li> Price: 2€</li>
-				<li> Singer 3</li>
-				<li> Year 3</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio_mp3.jpg' %}" class="img-item">
-			<h4> Audio File 4 </h4>
-			<ul>
-				<li> Price: 1€</li>
-				<li> Singer 4</li>
-				<li> Year 4</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio_wma.png' %}" class="img-item">
-			<h4> Audio File 5 </h4>
-			<ul>
-				<li> Price: 2€</li>
-				<li> Singer 5</li>
-				<li> Year 5</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio.jpg' %}" class="img-item">
-			<h4> Audio File 6 </h4>
-			<ul>
-				<li> Price: 4€</li>
-				<li> Singer 6</li>
-				<li> Year 6</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio_wma.png' %}" class="img-item">
-			<h4> Audio File 7 </h4>
-			<ul>
-				<li> Price: 6€</li>
-				<li> Singer 7</li>
-				<li> Year 7</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-		<div class="col-sm-3">
-			<img src="{% static 'img/audio2.jpg' %}" class="img-item">
-			<h4> Audio File 8 </h4>
-			<ul>
-				<li> Price: 5€</li>
-				<li> Singer 8</li>
-				<li> Year 8</li>
-			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
-		</div>
-	</div> -->
 	</div>
 
 </div>
