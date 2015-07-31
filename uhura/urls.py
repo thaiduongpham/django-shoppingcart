@@ -9,10 +9,7 @@ urlpatterns = [
 
 	url(r'^itemlist$', 'home.views.result', name='home'),
 	
-	# Test
-	# url(r'^addtocart/([0-9][a-z])/$', 'home.views.addtocart'),
-
-	url(r'^addtocart/([0-9]{4})/$', 'home.views.addtocart'),
+	url(r'^addtocart$', 'home.cart.add_to_cart'),
 
 	url(r'^admin/', include(admin.site.urls)),
 	]

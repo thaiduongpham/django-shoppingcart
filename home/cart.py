@@ -3,6 +3,8 @@ from .models import CartItem, Product
 from django.shortcuts import get_object_or_404 
 from django.http import HttpResponseRedirect
 
+from django.shortcuts import render
+
 import decimal
 import random 
 
@@ -28,38 +30,95 @@ def _generate_cart_id():
 def get_cart_items(request): 
     return CartItem.objects.filter(cart_id=_cart_id(request))
 
-# add an item to the cart 
+
+# def add_to_cart(request, quantity, product_id):
+
 def add_to_cart(request):
-    postdata = request.POST.copy() 
+
+    print ("start calling add_to_cart method")
+
+    postdata = request.GET.copy()
     
     #old code
     # SEND PRODUCT_ID with POST?????? 
     product_id = postdata.get('product_id','') 
     
+
+    # product_id = productid
+    # p = Product.objects.get(id = product_id)
+    
     # get quantity added, return 1 if empty 
     quantity = postdata.get('quantity',1) 
+
+    # quantity = quantity
     
     # (Option) fetch the product or return a missing page error 
-    p = get_object_or_404(Product, product_id=product_id)
-    
+    # p = get_object_or_404(Product, product_id=product_id)
+
+    p = Product.objects.get(product_id = product_id)
+
     #get products in cart 
     cart_products = get_cart_items(request) 
+
     product_in_cart = False 
     
     # check to see if item is already in cart 
-    for cart_item in cart_products: 
-        if cart_item.product.id = p.id: 
-        # update the quantity if found 
-        cart_item.augment_quantity(quantity) 
-        product_in_cart = True 
+    for cart_item in cart_products:
+        if cart_item.product.product_id == product_id:
+
+            # update the quantity if found 
+            cart_item.augment_quantity(quantity)
+            product_in_cart = True 
     
-    if not product_in_cart: 
+    if not product_in_cart:
         # create and save a new cart item 
-        ci = CartItem() 
+        ci = CartItem()
         ci.product = p 
         ci.quantity = quantity 
-        ci.cart_id = _cart_id(request) 
-        ci.save() 
+        ci.cart_id = _cart_id(request)
+        ci.save()
+
+    #add to test - delete later
+    context = {}
+    template = "home.html"
+    return render (request, template, context)
+
+
+# add an item to the cart 
+# def add_to_cart(request):
+
+#     print ("Duong start calling add_to_cart method")
+
+#     postdata = request.POST.copy()
+    
+#     #old code
+#     # SEND PRODUCT_ID with POST?????? 
+#     product_id = postdata.get('product_id','') 
+    
+#     # get quantity added, return 1 if empty 
+#     quantity = postdata.get('quantity',1) 
+    
+#     # (Option) fetch the product or return a missing page error 
+#     p = get_object_or_404(Product, product_id=product_id)
+    
+#     #get products in cart 
+#     cart_products = get_cart_items(request) 
+#     product_in_cart = False 
+    
+#     # check to see if item is already in cart 
+#     for cart_item in cart_products: 
+#         if cart_item.product.id = p.id: 
+#         # update the quantity if found 
+#         cart_item.augment_quantity(quantity) 
+#         product_in_cart = True 
+    
+#     if not product_in_cart: 
+#         # create and save a new cart item 
+#         ci = CartItem() 
+#         ci.product = p 
+#         ci.quantity = quantity 
+#         ci.cart_id = _cart_id(request)
+#         ci.save()
 
 # returns the total number of items in the user's cart 
 def cart_distinct_item_count(request): 
