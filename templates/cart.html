@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+	ul {
+		margin: 10;
+		padding: 0;
+	}
+
+	li {
+		width: 155px;
+	}
+
+	span{
+		font-size: inherit;
+		font-weight: bolder;
+		padding-left: 46px;
+	}
+
+
+</style>
+
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand"> List of items </a>
+		</div> 	
+
+		<div id="navbar" class="navbar-collapse collapse">
+
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#"><i class="fa fa-sign-in"></i> Sign in </a>
+				</li>
+				<li>
+					<a href="#"><i class="fa fa-user-plus"></i> Sign up </a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron">
+	<div class="container">
+
+		<div class="col-sm-6">
+			<h1> Items in Cart </h1>
+
+			<p> List all of items in your cart </p>
+		</div>
+		<div class="col-sm-3">
+			<br>
+			<br>
+			<dl class="dl-horizontal">
+				<dt>Total items:</dt>
+				<dd>{{total_products}} </dd>
+				<dt>Total price:</dt>
+				<dd> {{total_price}} € </dd>
+			</dl>
+
+		</div>
+		<div class="col-sm-3">
+			<br>
+			<br>
+			<button type="button" class="btn btn-primary">Buy now </button>
+
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	
+	<div class="row">
+
+		{% for cart_item in cart_items %}
+		<div class="col-sm-12">
+			<img src= {{cart_item.product.url}} class="img-item"> <span> {{cart_item.product.name}}  </span>
+
+			<ul class="list-group">
+				<li class="list-group-item">
+					<span class="badge">{{cart_item.quantity}}</span>
+					Quantity:
+				</li>
+				<li class="list-group-item">
+					Price: 
+					<span >{{cart_item.product.price}} € </span>
+
+				</li>
+				<li class="list-group-item">
+					Total:
+					<span>{{cart_item.total}} €</span>
+
+				</li>
+			</ul>
+
+			<hr/>
+
+		</div>
+
+		{% endfor %}
+
+	</div>  <!--of div row-->
+
+</div>
+
+{% endblock %}

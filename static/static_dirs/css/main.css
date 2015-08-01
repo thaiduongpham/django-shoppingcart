@@ -66,3 +66,7 @@ body {
 .btn-group-lg>.btn, .btn-lg {
   border-radius: 0px;
 }
+
+.quantity {
+	font-weight: 600;
+}

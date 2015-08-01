@@ -1,13 +1,7 @@
 from django.shortcuts import render
 from .models import Product
 
-
 def home(request):
-
-	# if request.method == 'GET':
-	# 	print ('GET method .......')
-	# elif request.method == 'POST':
-	# 	print ('post method ............')
 
 	list_paper = Product.objects.filter(catagory__startswith='paper')
 	list_audio = Product.objects.filter(catagory__startswith='audio')
@@ -16,10 +10,13 @@ def home(request):
 
 	return render (request, template, context)
 
-def result(request):
-	context = {}
-	template = "itemlist.html"
-	return render (request, template, context)
+# def go_to_cart(request):
+
+
+
+# 	context = {}
+# 	template = "cart.html"
+# 	return render (request, template, context)
 
 #Test
 def addtocart(request, productid):
@@ -30,8 +27,8 @@ def addtocart(request, productid):
 	return render (request, template, context)
 
 #Test2
-def addtocart(request, year):	
-	product = Product.objects.get(year = year)
-	context = {'price' : product.price, 'author': product.author, 'url': product.url}
-	template = "home.html"
-	return render (request, template, context)
+# def addtocart(request, year):	
+# 	product = Product.objects.get(year = year)
+# 	context = {'price' : product.price, 'author': product.author, 'url': product.url}
+# 	template = "home.html"
+# 	return render (request, template, context)
