@@ -87,7 +87,6 @@ def add_to_cart(request):
     # print(hint_products)
     # return redirect (hint_products)
 
-
     context = {}
     print("total products issssssssss", total_products)
     
@@ -114,7 +113,7 @@ def go_to_cart(request):
     for cart_item in cart_items:
         total_products += cart_item.quantity
         total_price += cart_item.product.price * cart_item.quantity
-    
+
     context ={'cart_items': cart_items, 'total_products': total_products, 'total_price': total_price}
     template = "cart.html"
     return render (request, template, context)

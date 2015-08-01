@@ -29,6 +29,11 @@ body {
 	height: 160px;
 }
 
+.img-item-cart {
+	width: 100px;
+	height: 100px;
+}
+
 .img-top {
 	width: 110px;
 	height: 110px;

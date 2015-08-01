@@ -5,10 +5,6 @@
 {% block content %}
 
 <style>
-	ul {
-		margin: 10;
-		padding: 0;
-	}
 
 	li {
 		width: 155px;
@@ -20,8 +16,48 @@
 		padding-left: 46px;
 	}
 
+	.fa.fa-cc-paypal {
+		color: #253b80;
+	}
+	.fa.fa-cc-mastercard {
+		color: #0a3a82;
+	}
+
+	.fa.fa-cc-visa {
+		color: #0157a2;
+	}
+	.fa.fa-credit-card {
+		color: #DF3A01;
+	}
+	.fa.fa-money {
+		color: #04B404;
+	}
+
+	a.span_download {
+		padding-left: 300px;
+		color: #0B0B61;
+	}
 
 </style>
+
+<script>
+
+	$(document).ready(function(){
+
+		$("#form-payment").submit (function(){
+
+			$("#waitme").show()
+			window.setTimeout(function(){
+
+				$("#waitme").hide()
+				$(".span_download").show()
+				$("#btn_submit").prop("disabled", true);
+			},2000);
+		});
+	});		
+
+</script>
+
 
 <nav class="navbar navbar-inverse">
 	<div class="container">
@@ -32,7 +68,7 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand"> List of items </a>
+			<a href = "/" class="navbar-brand"> <i class="fa fa-hand-o-left"></i> </a>
 		</div> 	
 
 		<div id="navbar" class="navbar-collapse collapse">
@@ -44,6 +80,13 @@
 				<li>
 					<a href="#"><i class="fa fa-user-plus"></i> Sign up </a>
 				</li>
+				<li>
+					<a href="#"> Products <i class="fa fa-cart-plus fa-1x" ></i> <span class="badge">{{total_products}}</span> </a>
+				</li>
+				<li>
+					<a href="#"> Total price <span class="badge"> {{total_price}} €</span></a>
+				</li>
+
 			</ul>
 		</div>
 	</div>
@@ -56,24 +99,67 @@
 			<h1> Items in Cart </h1>
 
 			<p> List all of items in your cart </p>
-		</div>
-		<div class="col-sm-3">
-			<br>
-			<br>
-			<dl class="dl-horizontal">
-				<dt>Total items:</dt>
-				<dd>{{total_products}} </dd>
-				<dt>Total price:</dt>
-				<dd> {{total_price}} € </dd>
-			</dl>
+			<div id = "waitme" style = "display: none">
+				<i  class="fa fa-spinner fa-pulse fa-5x"></i>
+				<p> please wait ... </p>
+			</div>
 
 		</div>
-		<div class="col-sm-3">
-			<br>
-			<br>
-			<button type="button" class="btn btn-primary">Buy now </button>
+
+		<div class="col-sm-6">
+			<div class="col-sm-12">
+				<br>
+				<i class="fa fa-cc-paypal fa-2x"></i>
+				<i class="fa fa-credit-card fa-2x"></i>
+				<i class="fa fa-cc-visa fa-2x"></i>
+				<i class="fa fa-money fa-2x"></i>
+				<i class="fa fa-cc-mastercard fa-2x"></i>
+			</div>
+
+			<div class="col-sm-12"> 
+				<h4> Please provide following information to complete the payment </h4>
+				<br>
+
+				<form id = "form-payment" class="form-horizontal">
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-sm-2 control-label">Email</label>
+						<div class="col-sm-10">
+							<input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputAddress" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" id="inputAddress" placeholder="Address" required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="inputPayment" class="col-sm-2 control-label">Payment</label>
+
+						<div class="col-sm-10">
+							<select class="form-control">
+								<option>Paypal</option>
+								<option>Visa Card</option>
+								<option>Master Card</option>
+								<option>Bank Transfer</option>
+								<option>Direct Debit</option>
+							</select>
+						</div>
+
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-2 col-sm-10">
+							<button id = "btn_submit" type="submit" class="btn btn-primary">Buy now </button>
+						</div>
+					</div>
+				</form>
+
+			</div>
 
 		</div>
+
 	</div>
 </div>
 
@@ -83,7 +169,8 @@
 
 		{% for cart_item in cart_items %}
 		<div class="col-sm-12">
-			<img src= {{cart_item.product.url}} class="img-item"> <span> {{cart_item.product.name}}  </span>
+			<img src= {{cart_item.product.url}} class="img-item-cart"> <span> {{cart_item.product.name}}  </span> 
+			<a style="display:none" href = "#" class = "span_download"><i class="fa fa-arrow-circle-down fa-2x"></i></a>
 
 			<ul class="list-group">
 				<li class="list-group-item">
