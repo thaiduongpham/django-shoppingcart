@@ -10,7 +10,7 @@ class Product(models.Model):
 	url = models.CharField(max_length=100, default = '/static/img/audio.jpg')	
 	catagory = models.CharField(max_length=30, default = 'no_catagory')
 
-# Define CartItem in Cart  
+# Define CartItem in Cart 
 class CartItem(models.Model):
 	cart_id = models.CharField(max_length=50)
 	date_added = models.DateTimeField(auto_now_add=True) 
@@ -36,7 +36,6 @@ class CartItem(models.Model):
 	def add_quantity(self, quantity): 
 		self.quantity = self.quantity + int(quantity)
 		self.save()
-
 
 
 

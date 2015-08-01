@@ -7,9 +7,11 @@ urlpatterns = [
 	# add to joins app
 	url(r'^$', 'home.views.home', name='home'),
 
-	url(r'^showcart$', 'home.cart.go_to_cart'),
+	url(r'^showcart$', 'orders.cart.go_to_cart'),
 	
-	url(r'^addtocart$', 'home.cart.add_to_cart'),
+	url(r'^addtocart$', 'orders.cart.add_to_cart'),
+
+	url(r'^sendemail$', 'orders.cart.send_email'),
 
 	url(r'^admin/', include(admin.site.urls)),
 	]

@@ -108,3 +108,10 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static' ,'media')
 
 MEDIA_URL = '/media/'
+
+# Send email using gmail smtp 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'demoshopping2015@gmail.com'
+EMAIL_HOST_PASSWORD = 'demo2015'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

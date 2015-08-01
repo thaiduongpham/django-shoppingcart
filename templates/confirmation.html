@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+<!-- load static here -->
+{% load staticfiles %}
+
+{% block content %}
+
+<style>
+
+  .list-group-item {
+    width: 155px;
+  }
+
+  a.span_download {
+    padding-left: 300px;
+    color: #0B0B61;
+  }
+
+  .jumbotron {
+    padding-bottom: 0px;
+  }
+
+</style>
+
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href = "/" class="navbar-brand"> <i class="fa fa-hand-o-left"></i> </a>
+    </div>  
+
+    <div id="navbar" class="navbar-collapse collapse">
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="#"><i class="fa fa-user"></i> Hello, {{name}} </a>
+        </li>
+        <li>
+          <a href="#"> Products <i class="fa fa-cart-plus fa-1x" ></i> <span class="badge">{{total_products}}</span> </a>
+        </li>
+        <li>
+          <a href="#"> Total price <span class="badge"> {{total_price}} €</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <div class="col-sm-12">
+      <h1> Thanks for your shopping! </h1>
+
+      <p>  Email confirmation content:</p>
+      
+      <div class="well"> Dear {{name}}, <br><br>
+        Thanks for buying at our Demo shop! <br> <br>
+        Number of products are: <b> {{total_products}} </b>  <br>
+        <br>
+        Your payment is: <b> {{total_price}} € </b> <br><br>
+        The items will be sent to the following address: <b> {{address}} </b> <br> <br>
+        Best Regards, <br>
+        --------------------------------------- <br>
+        Demo shopping cart
+      </div>
+      <p> (*): A copy of this message has been sent to your email: {{email}} </p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <h3 id = "download"> Download buttons are available </h3> 
+  <hr/>
+
+  <div class="row">
+
+    {% for cart_item in cart_items %}
+    <div class="col-sm-12">
+      <img src= {{cart_item.product.url}} class="img-item-cart"> <span> {{cart_item.product.name}}  </span> 
+      <a href = "#" class = "span_download"><i class="fa fa-arrow-circle-down fa-2x"></i></a>
+
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">{{cart_item.quantity}}</span>
+          Quantity:
+        </li>
+        <li class="list-group-item">
+          Price: 
+          <span >{{cart_item.product.price}} € </span>
+        </li>
+        <li class="list-group-item">
+          Total:
+          <span>{{cart_item.total}} €</span>
+
+        </li>
+      </ul>
+
+      <hr/>
+
+    </div>
+
+    {% endfor %}
+
+  </div>  <!--of div row-->
+
+</div>
+
+{% endblock %}

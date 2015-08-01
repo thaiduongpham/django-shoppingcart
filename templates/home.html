@@ -115,9 +115,7 @@
 	<hr/>
 
 	<div class="added_div"> 
-
 		<h1>ADDED DIV HERE! </h1>
-
 		<!-- content added here -->
 	</div>
 
@@ -134,9 +132,9 @@
 			</ul>
 			<!-- <form class="form_product" action="addtocart" method="GET"> -->
 			<form class="form_product" method="GET">
+				<!-- {% csrf_token %} -->
 				<span class = "quantity"> Quantity: </span> <input type="number" name="quantity" value="0" min="1" max="9">
-				<input type="hidden" name="product_id" value={{product.product_id}} size="2">  
-
+				<input type="hidden" name="product_id" value={{product.product_id}} size="2"> 
 				<input id="btn_addtocart" type="submit" class="btn btn-sm btn-danger" align="right" value="Add to cart">
 			</form>
 
