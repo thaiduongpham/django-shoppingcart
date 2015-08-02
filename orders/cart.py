@@ -9,6 +9,7 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 
 import random 
+import os
 
 CART_ID_SESSION_KEY = 'cart_id' 
 
@@ -21,7 +22,7 @@ def _cart_id(request):
 
 def _generate_cart_id():
     cart_id = '' 
-    characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890' 
+    characters = '*+§$ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890' 
 
     cart_id_length = 50 
     for y in range(cart_id_length): 
@@ -34,14 +35,17 @@ def get_cart_items(request):
 
 def add_to_cart(request):
 
-    # if request.is_ajax():
-    #     print ("this is an AJAX Calling")
+    if request.is_ajax():
+        print ("this is an AJAX Calling")
 
-    print ("start calling add_to_cart method")
+    if request.method == 'GET':
+        print ("this is an GET Calling")
+    elif request.method == 'POST':
+        print ("this is an POST Calling")
 
     getdata = request.GET.copy()
     
-    product_id = getdata.get('product_id','') 
+    product_id = getdata.get('product_id','')
     
     # get quantity added, return 1 if empty 
     quantity = getdata.get('quantity',1)
@@ -77,21 +81,12 @@ def add_to_cart(request):
     for cart_item in cart_items:
         total_products += cart_item.quantity
 
-    #add to test - delete later 
-    # context = {'total_products' : total_products}
+    catagory = p.catagory
+    list_related_products = Product.objects.filter(catagory = catagory).exclude(product_id = product_id)
 
-    # catagory = p.catagory
-    # hint_products = Product.objects.filter(catagory = catagory).exclude(product_id = product_id)
-    # print(hint_products)
-    # return redirect (hint_products)
+    context = {'total_products' : total_products, 'list_related_products': list_related_products}
 
-    context = {}
-    print("total products issssssssss", total_products)
-    
-    # html = render_to_string('home.html')
-    # return HttpResponse(html)
-
-    template = "navbar.html"
+    template = "related_products.html"
     return render (request, template, context)
 
 # returns the total number of items in the user's cart 
@@ -145,4 +140,46 @@ def send_email (request):
 
     context = {'email': email, 'name': name, 'address': address,'total_products': total_products, 'total_price': total_price, 'cart_items': cart_items}
     template = "confirmation.html"
+    return render (request, template, context)
+
+
+def donwload_file(request):
+
+    response = HttpResponse()
+    
+    BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+    # print ('BASE_DIR locaton..........', BASE_DIR)
+
+    # product = Product.objects.get(product_id='paper01')
+
+    # url = "\static\img\pdf_wto_cover.png"
+    # url = product.url
+
+    # print ('Product url locaton..........', url)
+
+    file_name = os.path.join(BASE_DIR, 'static', 'img', 'audio.jpg')
+    print ('File Name locaton..........', file_name)
+
+    # response = HttpResponse(mimetype='application/force-download')
+    response = HttpResponse(file_name, content_type='image/jpg')
+
+    response['Content-Disposition']='attachment;filename="%s"'%('hehe.jpg')
+
+    return response
+
+# return total products and update to shopping cart 
+def get_total_products(request):
+
+    #get cartitems in cart 
+    cart_items = get_cart_items(request) 
+
+    total_products = 0
+    for cart_item in cart_items:
+        total_products += cart_item.quantity
+
+    print ('total products here', total_products)
+    context = {'total_products' : total_products}
+    template = "total_products.html"
+    
     return render (request, template, context)

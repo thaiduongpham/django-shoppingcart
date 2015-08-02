@@ -25,8 +25,8 @@ body {
 }
 
 .img-item {
-	width: 160px;
-	height: 160px;
+	width: 150px;
+	height: 150px;
 }
 
 .img-item-cart {
@@ -61,7 +61,7 @@ body {
 }
 
 .row {
-  padding-bottom: 50px;
+	padding-bottom: 50px;
 }
 
 .badge{
@@ -69,9 +69,45 @@ body {
 }
 
 .btn-group-lg>.btn, .btn-lg {
-  border-radius: 0px;
+	border-radius: 0px;
 }
 
 .quantity {
 	font-weight: 600;
+}
+
+/* added div for related products in */
+#related_products {
+	color: #3300CC;
+}
+
+/* css of cart.html file*/
+.fa.fa-cc-paypal {
+	color: #253b80;
+}
+.fa.fa-cc-mastercard {
+	color: #0a3a82;
+}
+
+.fa.fa-cc-visa {
+	color: #0157a2;
+}
+.fa.fa-credit-card {
+	color: #DF3A01;
+}
+.fa.fa-money {
+	color: #04B404;
+}
+
+a.span_download {
+	padding-left: 300px;
+	color: #0B0B61;
+}
+
+
+.div_added{
+	background-color: #F0F0F0 ;
+	margin-bottom: 40px;
+	margin-top: 20px; 
+	padding-bottom: 20px;
 }

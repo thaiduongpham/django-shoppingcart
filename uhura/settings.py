@@ -107,6 +107,8 @@ STATICFILES_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static' ,'media')
 
+# print ('value of media_root is ..........', MEDIA_ROOT)
+
 MEDIA_URL = '/media/'
 
 # Send email using gmail smtp 

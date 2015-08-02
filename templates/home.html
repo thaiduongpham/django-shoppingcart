@@ -19,7 +19,7 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<a href="showcart"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge">0</span> </a>
+					<a href="showcart"> CART <i class="fa fa-cart-plus fa-2x" ></i> <span class="badge"></span>{{total_products}}</a>
 				</li>
 			</ul>
 		</div>
@@ -78,51 +78,56 @@
 <script>
 
 	$(document).ready(function(){
-		$(".form_product").submit (function(){
+		$(".form_product").submit (function(event){
 
-				// Update Number of item in cart
-				// var count = 0;
-				// count ++;
-				// $(".badge").text(12);
-				
-				var product_id = $(this).find('input[name="product_id"]').val();
-				var quantity = $(this).find('input[name="quantity"]').val();
+			product_id = $(this).find('input[name="product_id"]').val();
+			quantity = $(this).find('input[name="quantity"]').val();
 
-				// alert(product_id + ' and' + quantity)
-				
-				$.get("addtocart",
-				{
-					product_id: product_id,
-					quantity: quantity
-				}, function(data,status){
+			// alert(product_id + ' and ' + quantity)
 
-					alert("Data: " + data + "\nStatus: " + status);
-					// alert("Data: " + "\nStatus: " );
+			$.get("addtocart",
+			{
+				product_id: product_id,
+				quantity: quantity
+			}, 
 
-					// $(".added_div").html(data)
-				});
+			function(data,status){
 
-				// var id = $(this).attr("id");
+				$(".added_div").html(data);
+
 			});
-	});		
+
+			return false
+		});
+	});
+
+	$(document).ready(function(){
+
+		$.get("gettotalproducts",
+
+			function(data,status){
+				$(".added_div").html(data);
+			});
+
+		return false
+	});			
 
 </script>
 
 <div class="container">
 
+	<div class="added_div"> 
+
+	</div>
+
 	<h3 id = "paper"> Reseach Papers </h3> 
 
 	<hr/>
 
-	<div class="added_div"> 
-		<h1>ADDED DIV HERE! </h1>
-		<!-- content added here -->
-	</div>
-
 	<div class="row">
 
 		{% for product in list_paper %}
-		<div class="col-sm-3">
+		<div class="col-sm-3 div_product">
 			<img src= {{product.url}} class="img-item"> 
 			<h4> {{product.name}}  </h4> 
 			<ul>
@@ -144,19 +149,6 @@
 
 	</div>  <!--of div row-->
 
-<!-- 	{% for product in list_paper1 %}
-	<div class="col-sm-3">
-		<img src= {{product.url}} class="img-item"> 
-		<h4> {{product.name}}  </h4> 
-		<ul>
-			<li> Price: {{product.price}}€</li>
-			<li> {{product.author}} </li>
-			<li> Year: {{product.year}} </li>
-		</ul>
-		<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href= {{product.product_id}} role="button"> Add to cart </a></p>
-	</div>
-	{% endfor %} -->
-
 	<h3 id = "audio"> Audio Recordings  </h3> 
 
 	<hr/>
@@ -172,7 +164,13 @@
 				<li> {{product.author}} </li>
 				<li> Year: {{product.year}} </li>
 			</ul>
-			<p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p>
+			<form class="form_product" method="GET">
+				<!-- {% csrf_token %} -->
+				<span class = "quantity"> Quantity: </span> <input type="number" name="quantity" value="0" min="1" max="9">
+				<input type="hidden" name="product_id" value={{product.product_id}} size="2"> 
+				<input id="btn_addtocart" type="submit" class="btn btn-sm btn-danger" align="right" value="Add to cart">
+			</form>
+			<!-- <p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p> -->
 		</div>
 		{% endfor %}
 

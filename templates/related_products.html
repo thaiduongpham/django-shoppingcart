@@ -1,0 +1,32 @@
+
+<script>
+	// Update total products value 
+	$(".badge").text({{total_products}})
+
+</script>
+
+<div class="container">
+
+	<h3 id = "related_products"> Related Products </h3> 
+
+	<hr/>
+
+	<div class="row div_added">
+
+		{% for product in list_related_products %}
+		<div class="col-sm-3">
+			<img src= {{product.url}} class="img-item-cart"> 
+			<h4> {{product.name}}  </h4> 
+			<ul>
+				<li> Price: {{product.price}}€</li>
+				<li> {{product.author}} </li>
+				<li> Year: {{product.year}} </li>
+				<li> <b>Catagory: {{product.catagory}} </b> </li>				
+			</ul>
+
+		</div>
+		{% endfor %}
+
+	</div>
+
+</div>
