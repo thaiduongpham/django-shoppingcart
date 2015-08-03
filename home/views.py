@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Product
-# from orders.cart import test_method
 
 def home(request):
 

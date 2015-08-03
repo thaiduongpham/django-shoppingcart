@@ -4,10 +4,6 @@ from django.contrib import admin
 from .models import Product
 from .models import CartItem
 
-
-# from django.contrib.auth.models import *
-# admin.site.unregister(Product) 
-
 class ProductAdmin(admin.ModelAdmin):
 	
 	list_display = ['product_id', 'name', 'author','year', 'price','url','catagory']

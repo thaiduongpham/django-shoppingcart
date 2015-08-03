@@ -12,7 +12,6 @@ urlpatterns = [
 
 	url(r'^gettotalproducts$', 'orders.cart.get_total_products'),
 	
-	# Test
 	url(r'^sendemail$', 'orders.cart.send_email'),
 
 	url(r'^download$', 'orders.cart.donwload_file'),

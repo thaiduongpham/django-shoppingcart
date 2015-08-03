@@ -13,7 +13,7 @@ import os
 
 CART_ID_SESSION_KEY = 'cart_id' 
 
-# get the current user's cart id, sets new one if blank 
+# get the current user's cart id, sets new one if empty
 def _cart_id(request):
     if request.session.get(CART_ID_SESSION_KEY,'') == '':
         request.session[CART_ID_SESSION_KEY] = _generate_cart_id() 
@@ -29,19 +29,15 @@ def _generate_cart_id():
         cart_id += characters[random.randint(0, len(characters)-1)]
     return cart_id
 
-# return all items from the current user's cart 
+# return all items from the current cart 
 def get_cart_items(request): 
     return CartItem.objects.filter(cart_id=_cart_id(request))
 
 def add_to_cart(request):
 
+    # check type of request
     if request.is_ajax():
         print ("this is an AJAX Calling")
-
-    if request.method == 'GET':
-        print ("this is an GET Calling")
-    elif request.method == 'POST':
-        print ("this is an POST Calling")
 
     getdata = request.GET.copy()
     
@@ -52,7 +48,7 @@ def add_to_cart(request):
 
     p = Product.objects.get(product_id = product_id)
 
-    #get cartitems in cart 
+    #get all cartitems in this session in cart 
     cart_items = get_cart_items(request) 
 
     product_in_cart = False
@@ -63,7 +59,7 @@ def add_to_cart(request):
 
             print("Cart item is existed!")
 
-            # update the quantity if found 
+            # update the quantity if true 
             cart_item.add_quantity(quantity)
             product_in_cart = True 
     
@@ -88,11 +84,6 @@ def add_to_cart(request):
 
     template = "related_products.html"
     return render (request, template, context)
-
-# returns the total number of items in the user's cart 
-def cart_distinct_item_count(request): 
-    return get_cart_items(request).count()
-
 
 # return a list of items in a session to cart.html
 def go_to_cart(request):
@@ -121,7 +112,7 @@ def send_email (request):
     total_products = postdata.get('total_products','')
     total_price = postdata.get('total_price','')
 
-    # Title of email
+    # title of email
     title = "Email confirmation content"
 
     # content of email
@@ -132,7 +123,7 @@ def send_email (request):
     content += address + "\n \n Best Regards, \n --------------------------------------- \n Demo shopping cart"
 
     admin_email = 'demoshopping2015@gmail.com'
-    # Send confirmation email to customer
+    # send confirmation email to customer
     send_mail (title, content, admin_email, [email])
 
     #get all cartitems in cart 
@@ -152,17 +143,15 @@ def donwload_file(request):
     file_name = os.path.join(BASE_DIR, 'static', 'img', 'audio.jpg')
     print ('File Name locaton..........', file_name)
 
-    # response = HttpResponse(mimetype='application/force-download')
     response = HttpResponse(file_name, content_type='image/jpg')
 
     response['Content-Disposition']='attachment;filename="%s"'%('filename.jpg')
 
     return response
 
-# return total products and update to shopping cart 
+# return total products and update to cart in home.html
 def get_total_products(request):
 
-    #get cartitems in cart 
     cart_items = get_cart_items(request) 
 
     total_products = 0
