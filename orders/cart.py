@@ -68,8 +68,8 @@ def add_to_cart(request):
             product_in_cart = True 
     
     if not product_in_cart:
-        # create and save a new cart item 
 
+        # create and save a new cart item         
         print("New Cart item is added!")
         ci = CartItem()
         ci.product = p 
@@ -149,22 +149,13 @@ def donwload_file(request):
     
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    # print ('BASE_DIR locaton..........', BASE_DIR)
-
-    # product = Product.objects.get(product_id='paper01')
-
-    # url = "\static\img\pdf_wto_cover.png"
-    # url = product.url
-
-    # print ('Product url locaton..........', url)
-
     file_name = os.path.join(BASE_DIR, 'static', 'img', 'audio.jpg')
     print ('File Name locaton..........', file_name)
 
     # response = HttpResponse(mimetype='application/force-download')
     response = HttpResponse(file_name, content_type='image/jpg')
 
-    response['Content-Disposition']='attachment;filename="%s"'%('hehe.jpg')
+    response['Content-Disposition']='attachment;filename="%s"'%('filename.jpg')
 
     return response
 

@@ -83,8 +83,6 @@
 			product_id = $(this).find('input[name="product_id"]').val();
 			quantity = $(this).find('input[name="quantity"]').val();
 
-			// alert(product_id + ' and ' + quantity)
-
 			$.get("addtocart",
 			{
 				product_id: product_id,
@@ -170,13 +168,12 @@
 				<input type="hidden" name="product_id" value={{product.product_id}} size="2"> 
 				<input id="btn_addtocart" type="submit" class="btn btn-sm btn-danger" align="right" value="Add to cart">
 			</form>
-			<!-- <p id="btn_addtocart"><a class="btn btn-sm btn-danger" href="#" role="button"> Add to cart </a></p> -->
 		</div>
 		{% endfor %}
 
-	</div>
+	</div>  <!--of div row-->
 
-</div>
+</div> <!--of div container-->
 
 {% endblock %}
 
